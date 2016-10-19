@@ -1,0 +1,47 @@
+body {
+  color: #333333;
+  margin: 0;
+  font-family: 'Merriweather', serif;
+}
+
+/*  kommentek így lehet írni, fuckjeee  */
+
+img {
+  width: 100%;
+}
+
+article {
+  max-width: 668px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+h2 {
+  color: #666666;
+  font-weight: normal;
+  font-size: 27px;
+  margin-top: 0;
+}
+
+p {
+  font-size: 21px;
+  line-height: 33px;
+
+}
+
+a {
+  color:#333333;
+}
