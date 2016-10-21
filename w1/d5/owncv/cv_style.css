@@ -1,0 +1,66 @@
+.header {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  align-self: center;
+}
+
+.introduce {
+  align-self: center;
+  margin-right: 20%;
+  margin-left: 20%;
+  font-family: 'Open Sans', sans-serif;
+  color: #2A1D32;
+}
+
+set {
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.pic_quote {
+  width: 60%;
+  margin-left: 20%;
+  align-items: center;
+}
+
+.blabla {
+  font-family: 'Open Sans', sans-serif;
+  color: #222222;
+}
+
+.notable{
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+h3 {
+  font-weight: bold;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.bla {
+  font-family: 'Dosis', sans-serif;
+}
+
+.schools {
+  color: black;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.h3_italic {
+  font-style: italic;
+}
+
+#striked {
+  text-decoration: line-through;
+}
+
+hr {
+  height: 3px; background-color: black;
+  margin-bottom: 50px;
+}
