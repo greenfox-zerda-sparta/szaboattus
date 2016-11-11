@@ -24,6 +24,7 @@ public:
   bool rating(int rate);
   std::string get_artist();
   std::string get_title();
+  int get_rate();
 };
 
 

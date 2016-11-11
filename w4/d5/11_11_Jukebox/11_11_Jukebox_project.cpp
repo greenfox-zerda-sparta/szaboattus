@@ -15,6 +15,7 @@ int main() {
   Song track01 = Song("Metallica", "Fuel");
 
   std::cout << "A szám típusa: " << track01.get_artist() << ", a címe: " << track01.get_title() << endl;
-
+  track01.rating(7);
+  std::cout << "A szám típusa: " << track01.get_artist() << ", a címe: " << track01.get_title() << ", ratingje: " << track01.get_rate() << endl;
   return 0;
 }

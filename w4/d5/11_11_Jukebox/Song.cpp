@@ -34,3 +34,7 @@ std::string Song::get_title() {
   return this->title;
 }
 
+int Song::get_rate() {
+  return this->rate;
+}
+
