@@ -41,10 +41,10 @@ void toLowerCaseSTD(string &str)
 void just_word (string &word) {
   string temp="";
   for (unsigned int i = 0; i < word.length(); i++) {
-    if (word[i] > 91 && word[i] < 123 ) {
+    if (word[i] > 96 && word[i] < 123 ) {
       temp += word[i];
     }
-    else if (word[i+1] > 91 && word[i+1] < 123) {
+    else if (i > 0 && word[i+1] > 96 && word[i+1] < 123) {
       temp += word[i];
     }
   }
