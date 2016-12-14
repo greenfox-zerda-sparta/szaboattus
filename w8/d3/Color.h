@@ -20,14 +20,19 @@ public:
   Color(unsigned char, unsigned char, unsigned char);
   Color(std::string);
   Color(Color& other);
-  unsigned int get_red();
-  unsigned int get_green();
-  unsigned int get_blue();
+
+  unsigned char get_red();
+  unsigned char get_green();
+  unsigned char get_blue();
+
+  void set_red(unsigned char x);
+  void set_green(unsigned char x);
+  void set_blue(unsigned char x);
+
   static int hexadecimal_to_decimal(std::string hexa);
   void darken(float amount);
   void lighten(float amount);
-// Color Color::blend(const color & other);
-
+  Color blend(const Color& other);
 };
 
 
