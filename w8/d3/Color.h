@@ -26,6 +26,7 @@ public:
   static int hexadecimal_to_decimal(std::string hexa);
   void darken(float amount);
   void lighten(float amount);
+// Color Color::blend(const color & other);
 
 };
 

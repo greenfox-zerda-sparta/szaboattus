@@ -70,11 +70,34 @@ unsigned int Color::get_blue(){
 
 void Color::darken(float amount) {
   if (amount < 1 && amount > 0) {
-    red *= amount;
-    green *= amount;
-    blue *= amount;
+    red -= red * amount;
+    green -= green * amount;
+    blue -= blue * amount;
   }
   else {
     std::cout << " give a number between 0 - 1 ";
   }
 }
+
+void Color::lighten(float amount) {
+  int _red;
+  int _green;
+  int _blue;
+
+  if (amount < 1 && amount > 0) {
+    red += (255 - red) * amount;
+    green += (255 - green) * amount;
+    blue += (255 - blue) * amount;
+  }
+  else {
+    std::cout << " give a number between 0 - 1 ";
+  }
+}
+
+/*
+
+Color Color::blend(const color & other) {
+
+return
+}
+ */

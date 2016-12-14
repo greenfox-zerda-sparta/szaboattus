@@ -11,9 +11,9 @@
 using namespace std;
 
 int main() {
-  Color black;
-  Color lol(200,200,200);
-  Color hex("#ffffff");
+  //Color black;
+  Color lol(100,100,100);
+  //Color hex("#ffffff");
   lol.darken(0.5);
   cout << lol.get_blue() << " " << lol.get_green() << " " << lol.get_red() << endl;
 	return 0;
