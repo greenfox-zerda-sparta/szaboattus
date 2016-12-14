@@ -19,6 +19,12 @@ Color::Color() {
   this->blue = 0;
 }
 
+Color::Color(Color& other) {
+  this->red = other.red;
+  this->green = other.green;
+  this->blue = other.blue;
+}
+
 Color::Color(unsigned char _red, unsigned char _green, unsigned char _blue) {
   this->red = _red;
   this->green = _green;
@@ -105,3 +111,16 @@ Color Color::blend(const Color& other) {
 
   return newcolor;
 }
+
+Color Color::operator+(const Color& other) {
+  Color blended_color;
+  blended_color = blend(other);
+  return blended_color;
+}
+/*
+Color::operator++ (const Color& other) {
+  Color blended_color;
+  blended_color = blend(other);
+  return blended_color;
+}
+*/

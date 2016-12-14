@@ -19,11 +19,15 @@ int main() {
 
   Color red(255,0,0);
   Color blue(0,0,255);
+  Color newcolor;
 
   cout << (int)red.get_red() << " " << (int)red.get_green() << " " << (int)red.get_blue() << endl;
   cout << (int)blue.get_red() << " " << (int)blue.get_green() << " " << (int)blue.get_blue() << endl;
 
-  cout << (int)red.blend(blue).get_red() << (int)red.blend(blue).get_green() << (int)red.blend(blue).get_blue();
+  cout << (int)red.blend(blue).get_red() << (int)red.blend(blue).get_green() << (int)red.blend(blue).get_blue() << endl;
+
+  newcolor = red + blue;
+  cout << "newcolor: " << (int)newcolor.get_red() << (int)newcolor.get_green() << (int)newcolor.get_blue();
 
 	return 0;
 }

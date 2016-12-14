@@ -33,6 +33,8 @@ public:
   void darken(float amount);
   void lighten(float amount);
   Color blend(const Color& other);
+  Color operator+(const Color& other);
+  //operator++ (const Color& other);
 };
 
 
