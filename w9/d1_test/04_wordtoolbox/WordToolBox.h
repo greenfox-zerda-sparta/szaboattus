@@ -17,9 +17,9 @@ public:
   WordToolBox(string _stringHeld);
   string get_stringHeld();
   void set_stringHeld(string str);
+  bool isTheStringEmpty(string str);
   bool isAnAnagram(string stringToCheck);
   int countHowMany(char charToFind);
-  bool isAnagram(string stringToCheck);
   string removespace(string str);
   string sortString(string str);
 };

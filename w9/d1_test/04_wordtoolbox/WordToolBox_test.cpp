@@ -10,7 +10,13 @@
 
 #ifndef CATCH_CONFIG_MAIN
 int main(){
-  std::cout << "lol";
+  WordToolBox wordtoolbox("index kaszabol");
+  //std::cout << "countHowMany(\"a\")= " << wordtoolbox.countHowMany('a') << std::endl;
+
+  string alternatives[1] = {"szabad lexikon"};
+  for (int i = 0; i < 1; ++i) {
+    cout << "is -" << alternatives[i] << "- an anagram of -" << wordtoolbox.get_stringHeld() << "- = " << wordtoolbox.isAnAnagram(alternatives[i]) << endl;
+  }
   return 0;
 }
 #endif
@@ -38,4 +44,30 @@ TEST_CASE("WordToolBox countHowMany count") {
   WordToolBox wordtoolbox("motherfucker");
   REQUIRE(wordtoolbox.countHowMany('e') == 2);
 }
+
+TEST_CASE("WordToolBox removespace") {
+  WordToolBox wordtoolbox("apple apple");
+  REQUIRE(wordtoolbox.removespace("apple apple") == "appleapple");
+}
+
+TEST_CASE("WordToolBox removespace char not included in the string") {
+  WordToolBox wordtoolbox("apple apple");
+  CHECK_THROWS(wordtoolbox.removespace(""));
+}
+
+TEST_CASE("WordToolBox sortString") {
+  WordToolBox wordtoolbox("apple");
+  REQUIRE(wordtoolbox.sortString("apple") == "aelpp");
+}
+
+TEST_CASE("WordToolBox sortString char not included in the string") {
+  WordToolBox wordtoolbox("apple apple");
+  CHECK_THROWS(wordtoolbox.sortString(""));
+}
+
+TEST_CASE("WordToolBox isAnAnagram") {
+  WordToolBox wordtoolbox("index kaszabol");
+  REQUIRE(wordtoolbox.isAnAnagram("szabad lexikon"));
+}
+
 #endif

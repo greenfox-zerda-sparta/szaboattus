@@ -33,7 +33,12 @@ int WordToolBox::countHowMany(char charToFind) {
   return sum;
 }
 
+bool WordToolBox::isTheStringEmpty(string str) {
+  return (str == "");
+}
+
 string WordToolBox::removespace(string str) {
+  if (isTheStringEmpty(str)) throw "no string added";
   string temp = "";
   for (string::iterator it = str.begin(); it != str.end(); it++) {
     if (*it != ' ') {
@@ -44,20 +49,12 @@ string WordToolBox::removespace(string str) {
 }
 
 string WordToolBox::sortString(string str) {
+  if (isTheStringEmpty(str)) throw "no string added";
   sort(str.begin(), str.end());
   return str;
 }
 
-bool WordToolBox::isAnagram(string stringToCheck) {
-  unsigned int is_anagramma = 0;
-  removespace(stringToCheck);
-  removespace(stringHeld);
-  sortString(stringToCheck);
-  sortString(stringHeld);
-  for (unsigned int i = 0; i < stringToCheck.size(); i++) {
-    if (stringToCheck[i] == stringHeld[i]) {
-      is_anagramma++;
-    }
-  }
-  return (is_anagramma == stringToCheck.size());
+bool WordToolBox::isAnAnagram(string stringToCheck) {
+  if (isTheStringEmpty(stringToCheck)) throw "no string added";
+  return sortString((removespace(stringToCheck))) == sortString((removespace(stringHeld)));
 }
