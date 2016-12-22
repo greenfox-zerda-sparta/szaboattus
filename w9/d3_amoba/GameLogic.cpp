@@ -16,25 +16,30 @@ vector <vector<int>>& GameLogic::get_V() {
   return V;
 }
 
-void GameLogic::set_get_V(pair <int, int> coordinates) {
-  V[coordinates.first][coordinates.second] = 1;
+void GameLogic::set_grid_value(int x, int y, int gamer) {
+  (gamer % 2) ? V[y/30][x/30] = 1 : V[y/30][x/30] = 2;
 }
 
 bool GameLogic::check_row(vector <vector<int>> V) {
-  int sum = 0;
+  int player1 = 0;
+  int player2 = 0;
   bool iswinner = false;
   for (unsigned int i = 0; i < V.size(); i++) {
     for (unsigned int j = 0; j < V.size(); j++) {
-      if(V[i][j] == 1 && sum < 5) {
-        sum++;
+      if(V[i][j] == 1 && player1 < 5) {
+        player1++;
       }
-      else if(sum == 5){
+      else if(V[i][j] == 2 && player2 < 5) {
+        player2++;
+      }
+      else if(player1 == 5 || player2 == 5){
         iswinner = 1;
         break;
       }
       else{
         iswinner = 0;
-        sum = 0;
+        player1 = 0;
+        player2 = 0;
       }
     }
     if(iswinner) break;
@@ -43,38 +48,30 @@ bool GameLogic::check_row(vector <vector<int>> V) {
 }
 
 bool GameLogic::check_column(vector <vector<int>> V) {
-  int sum = 0;
+  int player1 = 0;
+  int player2 = 0;
   bool iswinner = false;
   for (unsigned int i = 0; i < V.size(); i++) {
     for (unsigned int j = 0; j < V.size(); j++) {
-      if(V[j][i] == 1 && sum < 5) {
-        sum++;
+      if(V[j][i] == 1 && player1 < 5) {
+        player1++;
       }
-      else if(sum == 5){
+      else if(V[j][i] == 2 && player2 < 5) {
+        player2++;
+      }
+      else if(player1 == 5 || player2 == 5){
         iswinner = 1;
         break;
       }
       else{
         iswinner = 0;
-        sum = 0;
+        player1 = 0;
+        player2 = 0;
       }
     }
     if(iswinner) break;
   }
   return iswinner;
-}
-
-bool GameLogic::check_diagonal_right(vector <vector<int>> V) {
-}
-
-void GameLogic::add_ones() {
-  V[0][4] = 1;
-  V[1][3] = 1;
-  V[2][2] = 1;
-  V[3][1] = 1;
-  V[4][0] = 1;
-  V[8][0] = 1;
-
 }
 
 void GameLogic::draw_vector() {
@@ -84,5 +81,5 @@ void GameLogic::draw_vector() {
     }
     std::cout << endl;
   }
+  std::cout << "-------------------- " << endl;
 }
-

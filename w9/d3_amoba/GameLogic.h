@@ -8,6 +8,7 @@
 #ifndef GAMELOGIC_H_
 #define GAMELOGIC_H_
 #include <vector>
+#include "SDLwindow.h"
 
 using namespace std;
 
@@ -20,10 +21,8 @@ public:
   bool check_column(vector <vector<int>> V);
   bool check_diagonal_right(vector <vector<int>> V);
   vector <vector<int>>& get_V();
-  void set_get_V(pair <int, int>);
-  void add_ones();
+  void set_grid_value(int, int, int gamer);
   void draw_vector();
-
 };
 
 #endif /* GAMELOGIC_H_ */

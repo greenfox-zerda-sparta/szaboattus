@@ -26,9 +26,10 @@ private:
 
 public:
   SDL_Window(int, int);
-  void run(vector <vector<int>> &);
+  void run();
+  pair <int, int> create_click_coordinates(int x, int y);
   void drawbackground();
-  void drawimage(std::pair <int ,int>, int &);
+  void drawimage(int & x, int& y, int &gamer);
   std::pair <int, int> give_mouse_click();
   ~SDL_Window();
 };
