@@ -19,7 +19,7 @@ public:
   bool check_row(vector <vector<int>> V);
   bool check_column(vector <vector<int>> V);
   bool check_diagonal_right(vector <vector<int>> V);
-  vector <vector<int>> get_V();
+  vector <vector<int>>& get_V();
   void set_get_V(pair <int, int>);
   void add_ones();
   void draw_vector();

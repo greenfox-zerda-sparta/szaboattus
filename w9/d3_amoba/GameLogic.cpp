@@ -12,7 +12,7 @@ GameLogic::GameLogic() {
   this->V = vector <vector<int> > (19, vector<int>(19,0));
 }
 
-vector <vector<int>> GameLogic::get_V() {
+vector <vector<int>>& GameLogic::get_V() {
   return V;
 }
 

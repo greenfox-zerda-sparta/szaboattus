@@ -8,7 +8,10 @@
 #ifndef SDLWINDOW_H_
 #define SDLWINDOW_H_
 #include <utility>
+#include <vector>
 #include "SDL2/SDL.h"
+
+using namespace std;
 
 class SDL_Window {
 private:
@@ -23,7 +26,7 @@ private:
 
 public:
   SDL_Window(int, int);
-  void run();
+  void run(vector <vector<int>> &);
   void drawbackground();
   void drawimage(std::pair <int ,int>, int &);
   std::pair <int, int> give_mouse_click();

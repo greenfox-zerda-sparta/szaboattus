@@ -29,7 +29,7 @@ void SDL_Window::drawbackground() {
   SDL_RenderPresent(renderer);
 }
 
-void SDL_Window::run() {
+void SDL_Window::run(vector <vector<int>> &V) {
 int running = 1;
 pair <int, int> coordinates;
   while (running) {
@@ -39,23 +39,17 @@ pair <int, int> coordinates;
         break;
       }
     }
-    if (event.type == SDL_MOUSEBUTTONUP) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
       gamer++;
       coordinates.first = event.button.x;
       coordinates.second = event.button.y;
       drawimage(coordinates, gamer);
       coordinates = {0, 0};
+      event.type = NULL;
+      V[coordinates.first / 30][coordinates.second / 30] = gamer % 2;
+      cout << V[coordinates.first / 30][coordinates.second / 30] << " | ";
     }
   }
-}
-
-pair <int, int> SDL_Window::give_mouse_click() {
-  pair <int, int> coordinates = {0, 0};
-  if (event.type == SDL_MOUSEBUTTONUP) {
-    coordinates.second = event.button.x;
-    coordinates.first = event.button.y;
-  }
-  return coordinates;
 }
 
 void SDL_Window::drawimage(pair <int, int> coordinates, int &gamer) {
@@ -69,7 +63,6 @@ void SDL_Window::drawimage(pair <int, int> coordinates, int &gamer) {
   texture = SDL_CreateTextureFromSurface(renderer, image);
   SDL_RenderCopy(renderer, texture, NULL, &dstrect);
   SDL_RenderPresent(renderer);
-  std::cout << gamer <<" | ";
 }
 
 SDL_Window::~SDL_Window() {

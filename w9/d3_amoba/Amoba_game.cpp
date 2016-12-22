@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 
   GameLogic game;
   SDL_Window sdl_window(570, 570);
-  sdl_window.run();
+  sdl_window.run(game.get_V());
 
 	return 0;
 }
