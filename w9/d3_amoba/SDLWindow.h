@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 #include "SDL2/SDL.h"
+#include <SDL_net.h>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ public:
   pair <int, int> create_click_coordinates(int x, int y);
   void drawbackground();
   void drawimage(int & x, int& y, int &gamer);
+  void draw_winner(int player);
   std::pair <int, int> give_mouse_click();
   ~SDL_Window();
 };

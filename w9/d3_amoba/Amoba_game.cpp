@@ -17,6 +17,5 @@ using namespace std;
 int main(int argc, char *argv[]) {
   SDL_Window sdl_window(570, 570);
   sdl_window.run();
-
 	return 0;
 }

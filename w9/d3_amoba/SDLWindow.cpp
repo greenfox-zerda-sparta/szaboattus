@@ -11,7 +11,7 @@
 
 
 SDL_Window::SDL_Window(int width, int height) {
-  SDL_Init(SDL_INIT_VIDEO);
+  SDL_Init(SDL_INIT_EVERYTHING);
   window = SDL_CreateWindow(
   "Amoba",
   SDL_WINDOWPOS_CENTERED,
@@ -39,10 +39,13 @@ int running = 1;
       event.type = NULL;
       game.draw_vector();
     }
-    if (game.check_row(game.get_V()) || game.check_column(game.get_V())) {
-      running = 0;
-      break;
-    }
+    if (game.iswinner()) {
+     SDL_Delay(3000);
+     draw_winner(gamer - 1);
+     SDL_Delay(1000);
+     running = 0;
+     break;
+     }
   }
 }
 
@@ -72,6 +75,19 @@ void SDL_Window::drawimage(int & x, int& y, int &gamer) {
   SDL_RenderCopy(renderer, texture, NULL, &dstrect);
   SDL_RenderPresent(renderer);
   gamer++;
+}
+
+void SDL_Window::draw_winner(int player) {
+  if (player % 2) {
+      image = SDL_LoadBMP("x_winner.bmp");
+    }
+  else {
+      image = SDL_LoadBMP("o_winner.bmp");
+    }
+    SDL_Rect dstrect = {0, 0, 600, 600};
+    texture = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    SDL_RenderPresent(renderer);
 }
 
 SDL_Window::~SDL_Window() {

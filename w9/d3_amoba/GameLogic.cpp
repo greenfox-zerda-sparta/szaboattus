@@ -20,56 +20,66 @@ void GameLogic::set_grid_value(int x, int y, int gamer) {
   (gamer % 2) ? V[y/30][x/30] = 1 : V[y/30][x/30] = 2;
 }
 
-bool GameLogic::check_row(vector <vector<int>> V) {
-  int player1 = 0;
-  int player2 = 0;
-  bool iswinner = false;
-  for (unsigned int i = 0; i < V.size(); i++) {
-    for (unsigned int j = 0; j < V.size(); j++) {
-      if(V[i][j] == 1 && player1 < 5) {
-        player1++;
-      }
-      else if(V[i][j] == 2 && player2 < 5) {
-        player2++;
-      }
-      else if(player1 == 5 || player2 == 5){
-        iswinner = 1;
-        break;
-      }
-      else{
-        iswinner = 0;
-        player1 = 0;
-        player2 = 0;
-      }
+bool GameLogic::check_row(int x, int y) {
+  int counter = 1;
+  if (y < 15){
+    while (counter < 5 && V[x][y] == V[x][y+1]) {
+      y++;
+      counter++;
     }
-    if(iswinner) break;
   }
-  return iswinner;
+  return counter >= 5;
 }
 
-bool GameLogic::check_column(vector <vector<int>> V) {
-  int player1 = 0;
-  int player2 = 0;
+bool GameLogic::check_column(int x, int y) {
+  int counter = 1;
+  if (x < 15){
+    while (counter < 5 && V[x][y] == V[x+1][y]) {
+      x++;
+      counter++;
+    }
+  }
+  return counter >= 5;
+}
+
+bool GameLogic::check_diagonal_down(int x, int y) {
+  int counter = 1;
+  if (x < 15 && y < 15){
+    while (counter < 5 && V[x][y] == V[x+1][y+1]) {
+      x++;
+      y++;
+      counter++;
+    }
+  }
+  return counter >= 5;
+}
+
+bool GameLogic::check_diagonal_up(int x, int y) {
+  int counter = 1;
+  if (x < 15 && y < 15){
+    while (counter < 5 && V[x][y] == V[x-1][y+1]) {
+      x--;
+      y++;
+      counter++;
+    }
+  }
+  return counter >= 5;
+}
+
+bool GameLogic::check_four_direction(int x, int y) {
+  return check_column(x,y) || check_row(x,y) || check_diagonal_down(x,y) || check_diagonal_up(x,y);
+}
+
+bool GameLogic::iswinner() {
   bool iswinner = false;
   for (unsigned int i = 0; i < V.size(); i++) {
     for (unsigned int j = 0; j < V.size(); j++) {
-      if(V[j][i] == 1 && player1 < 5) {
-        player1++;
-      }
-      else if(V[j][i] == 2 && player2 < 5) {
-        player2++;
-      }
-      else if(player1 == 5 || player2 == 5){
-        iswinner = 1;
-        break;
-      }
-      else{
-        iswinner = 0;
-        player1 = 0;
-        player2 = 0;
+      if (V[i][j] !=0) {
+        if (check_four_direction(i,j)) {
+          iswinner = check_four_direction(i,j);
+        }
       }
     }
-    if(iswinner) break;
   }
   return iswinner;
 }
