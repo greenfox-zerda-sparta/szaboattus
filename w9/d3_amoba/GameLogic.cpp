@@ -17,7 +17,7 @@ vector <vector<int>>& GameLogic::get_V() {
 }
 
 void GameLogic::set_grid_value(int x, int y, int gamer) {
-  (gamer % 2) ? V[y/30][x/30] = 1 : V[y/30][x/30] = 2;
+  (gamer % 2) ? V[y][x] = 1 : V[y][x] = 2;
 }
 
 bool GameLogic::check_row(int x, int y) {
