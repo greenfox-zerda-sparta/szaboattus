@@ -10,7 +10,7 @@
 #include <utility>
 #include <vector>
 #include "SDL2/SDL.h"
-#include <SDL_net.h>
+#include <SDL_Net.h>
 #include <iostream>
 #include "ClientSocket.h"
 

@@ -26,6 +26,7 @@ public:
   void set_grid_value(int, int, int gamer);
   void draw_vector();
   bool iswinner();
+  bool allow_to_step(int x, int y);
 };
 
 #endif /* GAMELOGIC_H_ */

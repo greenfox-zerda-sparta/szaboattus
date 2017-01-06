@@ -93,3 +93,7 @@ void GameLogic::draw_vector() {
   }
   std::cout << "-------------------- " << endl;
 }
+
+bool GameLogic::allow_to_step(int x, int y){
+  return V[y][x] == 0;
+}

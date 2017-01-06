@@ -10,7 +10,6 @@
 #include <iostream>
 
 
-
 SDL_Window::SDL_Window(int width, int height) {
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
@@ -39,10 +38,12 @@ void SDL_Window::run() {
       x = create_coordinates(msg).first;
       y = create_coordinates(msg).second;
       cout << gamer << ": click on: " << x << "  "  << y << endl;
-      gamer++;
-      game.set_grid_value(x, y,gamer);
-      game.draw_vector();
-      drawimage(x,y,gamer);
+      if (game.allow_to_step(x,y)) {
+        gamer++;
+        game.set_grid_value(x, y,gamer);
+        game.draw_vector();
+        drawimage(x,y,gamer);
+      }
     }
     if (SDL_PollEvent(&event) != 0) {
       if (event.type == SDL_QUIT) {
@@ -50,7 +51,9 @@ void SDL_Window::run() {
         break;
       }
       if (event.type == SDL_MOUSEBUTTONDOWN) {
-        cs->getUserInput(give_mouse_coordinates(event.button.x, event.button.y));
+        if(game.allow_to_step(event.button.x / 30, event.button.y / 30)) {
+          cs->getUserInput(give_mouse_coordinates(event.button.x, event.button.y));
+        }
         event.type = NULL;
       }
       if (game.iswinner()) {
@@ -61,7 +64,6 @@ void SDL_Window::run() {
         break;
       }
     }
-    SDL_RenderPresent(renderer);
   }
 }
 
@@ -107,6 +109,7 @@ void SDL_Window::drawimage(int& x, int& y, int& gamer) {
   SDL_Rect dstrect = {x * 30, y * 30, 30, 30};
   texture = SDL_CreateTextureFromSurface(renderer, image);
   SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+  SDL_RenderPresent(renderer);
 }
 
 void SDL_Window::draw_winner(int player) {
