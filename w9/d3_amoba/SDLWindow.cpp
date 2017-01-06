@@ -7,29 +7,21 @@
 
 #include "SDLWindow.h"
 #include "GameLogic.h"
+#include "DrawImg.h"
 #include <iostream>
 
 
-SDL_Window::SDL_Window(int width, int height) {
+SDL_Window::SDL_Window() {
   SDL_Init(SDL_INIT_EVERYTHING);
   SDLNet_Init();
-  IPaddress ip;
+  //IPaddress ip;
   cs = new ClientSocket("10.27.99.120", 1234, 512);
   cs->connectToServer();
-
-  window = SDL_CreateWindow(
-  "Amoba",
-  SDL_WINDOWPOS_CENTERED,
-  SDL_WINDOWPOS_CENTERED,
-  width,
-  height,
-  SDL_WINDOW_OPENGL);
-  drawbackground();
-  GameLogic game;
 }
 
 void SDL_Window::run() {
   GameLogic game;
+  DrawImg drawimg(570, 570);
   int running = 1;
   while (running) {
     string msg = "";
@@ -37,12 +29,10 @@ void SDL_Window::run() {
     if (msg.length() > 1) {
       x = create_coordinates(msg).first;
       y = create_coordinates(msg).second;
-      cout << gamer << ": click on: " << x << "  "  << y << endl;
       if (game.allow_to_step(x,y)) {
         gamer++;
         game.set_grid_value(x, y,gamer);
-        game.draw_vector();
-        drawimage(x,y,gamer);
+        drawimg.drawimage(x,y,gamer);
       }
     }
     if (SDL_PollEvent(&event) != 0) {
@@ -58,7 +48,7 @@ void SDL_Window::run() {
       }
       if (game.iswinner()) {
         SDL_Delay(3000);
-        draw_winner(gamer - 1);
+        drawimg.draw_winner(gamer - 1);
         SDL_Delay(1000);
         running = 0;
         break;
@@ -89,48 +79,4 @@ pair <int, int> SDL_Window::create_coordinates(string msg) {
   coordinates.first = stoi(x);
   coordinates.second = stoi(y);
   return coordinates;
-}
-
-void SDL_Window::drawbackground() {
-  renderer = SDL_CreateRenderer(window, -1, 0);
-  SDL_SetRenderDrawColor(renderer, 224, 160, 64, 255);
-  SDL_RenderClear(renderer);
-  SDL_RenderPresent(renderer);
-}
-
-void SDL_Window::drawimage(int& x, int& y, int& gamer) {
-  cout << x << y << endl;
-  if (gamer % 2 == 0) {
-    image = SDL_LoadBMP("x.bmp");
-  }
-  else {
-    image = SDL_LoadBMP("o.bmp");
-  }
-  SDL_Rect dstrect = {x * 30, y * 30, 30, 30};
-  texture = SDL_CreateTextureFromSurface(renderer, image);
-  SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-  SDL_RenderPresent(renderer);
-}
-
-void SDL_Window::draw_winner(int player) {
-  if (player % 2) {
-      image = SDL_LoadBMP("x_winner.bmp");
-      message = "x";
-    }
-  else {
-      image = SDL_LoadBMP("o_winner.bmp");
-      message = "o";
-    }
-    SDL_Rect dstrect = {0, 0, 600, 600};
-    texture = SDL_CreateTextureFromSurface(renderer, image);
-    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    SDL_RenderPresent(renderer);
-}
-
-SDL_Window::~SDL_Window() {
-  SDL_FreeSurface(image);
-  SDL_DestroyRenderer(renderer);
-  SDL_DestroyTexture(texture);
-  SDL_DestroyWindow(window);
-  SDL_Quit();
 }

@@ -42,7 +42,7 @@ bool GameLogic::check_column(int x, int y) {
   return counter >= 5;
 }
 
-bool GameLogic::check_diagonal_down(int x, int y) {
+bool GameLogic::check_diagonal_up(int x, int y) {
   int counter = 1;
   if (x < 15 && y < 15){
     while (counter < 5 && V[x][y] == V[x+1][y+1]) {
@@ -54,12 +54,12 @@ bool GameLogic::check_diagonal_down(int x, int y) {
   return counter >= 5;
 }
 
-bool GameLogic::check_diagonal_up(int x, int y) {
+bool GameLogic::check_diagonal_down(int x, int y) {
   int counter = 1;
-  if (x < 15 && y < 15){
-    while (counter < 5 && V[x][y] == V[x-1][y+1]) {
-      x--;
-      y++;
+  if (x < 15 && y > 4){
+    while (counter < 5 && V[x][y] == V[x+1][y-1]) {
+      x++;
+      y--;
       counter++;
     }
   }
@@ -67,7 +67,7 @@ bool GameLogic::check_diagonal_up(int x, int y) {
 }
 
 bool GameLogic::check_four_direction(int x, int y) {
-  return check_column(x,y) || check_row(x,y) || check_diagonal_down(x,y) || check_diagonal_up(x,y);
+  return check_column(x,y) || check_row(x,y)|| check_diagonal_down(x,y) || check_diagonal_up(x,y);
 }
 
 bool GameLogic::iswinner() {

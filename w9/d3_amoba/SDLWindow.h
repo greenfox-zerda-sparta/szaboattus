@@ -30,16 +30,11 @@ private:
 
 public:
   string message;
-  SDL_Window(int, int);
+  SDL_Window();
   void run();
   pair <int, int> create_click_coordinates(int x, int y);
-  void drawbackground();
-  void drawimage(int &x, int &y, int& gamer);
-  void draw_winner(int player);
   std::pair <int, int> create_coordinates(string msg);
   string give_mouse_coordinates(int x, int y);
-
-  ~SDL_Window();
 };
 
 #endif /* SDLWINDOW_H_ */
