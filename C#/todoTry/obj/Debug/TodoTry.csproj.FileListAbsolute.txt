@@ -1,0 +1,6 @@
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\bin\Debug\TodoTry.exe.config
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\bin\Debug\TodoTry.exe
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\bin\Debug\TodoTry.pdb
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\obj\Debug\TodoTry.csprojResolveAssemblyReference.cache
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\obj\Debug\TodoTry.exe
+c:\users\win7\documents\visual studio 2015\Projects\TodoTry\TodoTry\obj\Debug\TodoTry.pdb
