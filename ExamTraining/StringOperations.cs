@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ExamTraining
 {
   public class StringOperations
-  {
+  { 
     public int giveBackCharAScii(char character)
     {
       return Convert.ToInt32(character);

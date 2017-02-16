@@ -14,8 +14,6 @@ namespace ExamTraining
     {
       calc = new Calculator();
       strOp = new StringOperations();
-
-      calc.divideNumbers(3, 0);
     }
   }
 }
