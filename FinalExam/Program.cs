@@ -14,8 +14,9 @@ namespace FinalExam
     static void Main(string[] args)
     {
       StringHandler strhandler = new StringHandler();
-      string str = "Greenfox";
-      strhandler.Reverse(str);
+      InputOutput inputoupthandler = new InputOutput();
+      inputoupthandler.inputString();
+      Console.WriteLine(strhandler.Reverse(inputoupthandler.inputStr));
     }
   }
 }
