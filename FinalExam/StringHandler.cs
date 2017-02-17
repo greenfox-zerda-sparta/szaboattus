@@ -10,13 +10,19 @@ namespace FinalExam
   {
     public string Reverse(string text)
     {
-      char[] charArray = text.ToCharArray();
-      string reverse = "";
-      for (int i = charArray.Length - 1; i > -1; i--)
+      try
       {
-        reverse += charArray[i];
+        string reverse = "";
+        for (int i = text.Length - 1; i >= 0; i--)
+        {
+          reverse += text[i];
+        }
+        return reverse;
       }
-      return reverse;
+      catch (Exception e)
+      {
+        return "An error occurred: '{0}'" + e;
+      }
     }
   }
 }
