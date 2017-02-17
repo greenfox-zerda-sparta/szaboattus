@@ -21,7 +21,7 @@ namespace FinalExam
       }
       catch (Exception e)
       {
-        return "An error occurred: '{0}'" + e;
+        return "An error occurred: " + e;
       }
     }
   }
